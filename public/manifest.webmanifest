@@ -1,0 +1,27 @@
+{
+  "name": "BM KONXEPT LTD",
+  "short_name": "BM KONXEPT",
+  "description": "BM KONXEPT LTD is a creative branding, advertising, printing and business communication company helping businesses build memorable brands and communicate with confidence.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
