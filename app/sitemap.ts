@@ -1,38 +1,50 @@
 import type { MetadataRoute } from "next";
+import { portfolio } from "@/data/site";
+
+const baseUrl = "https://bmkonxept.com";
+
+const lastModified = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://bmkonxept.com";
-
-  return [
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/portfolio`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
   ];
+
+  const projectPages: MetadataRoute.Sitemap = portfolio.map((project) => ({
+    url: `${baseUrl}/projects/${project.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...projectPages];
 }

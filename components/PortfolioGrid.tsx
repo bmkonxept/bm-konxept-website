@@ -25,7 +25,7 @@ export default function PortfolioGrid({
   let items =
     filter === "All"
       ? portfolio
-      : portfolio.filter((p) => p.category === filter);
+      : portfolio.filter((project) => project.category === filter);
 
   if (limit) {
     items = items.slice(0, limit);
@@ -33,15 +33,24 @@ export default function PortfolioGrid({
 
   return (
     <div>
-      {/* Category Filter */}
-      <div className="mb-10 flex flex-wrap justify-center gap-3">
+      {/* =====================================================
+          PORTFOLIO CATEGORY FILTER
+      ===================================================== */}
+
+      <div
+        className="mb-10 flex flex-wrap justify-center gap-3"
+        role="group"
+        aria-label="Filter portfolio projects by category"
+      >
         {categories.map((category) => {
           const active = filter === category;
 
           return (
             <button
               key={category}
+              type="button"
               onClick={() => setFilter(category)}
+              aria-pressed={active}
               className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
                 active
                   ? "bg-gold text-black shadow-[0_0_25px_rgba(212,175,55,0.18)]"
@@ -54,10 +63,14 @@ export default function PortfolioGrid({
         })}
       </div>
 
-      {/* Portfolio Grid */}
+      {/* =====================================================
+          PORTFOLIO PROJECT GRID
+      ===================================================== */}
+
       <motion.div
         layout
         className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        aria-live="polite"
       >
         <AnimatePresence mode="popLayout">
           {items.map((project, index) => (
@@ -73,12 +86,19 @@ export default function PortfolioGrid({
               }}
               className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-all duration-500 hover:-translate-y-1 hover:border-gold/30 hover:shadow-[0_15px_50px_rgba(0,0,0,0.25)]"
             >
-              <Link href={`/projects/${project.slug}`}>
-                {/* Image */}
+              <Link
+                href={`/projects/${project.slug}`}
+                aria-label={`View ${project.title} project in ${project.category}`}
+                className="block"
+              >
+                {/* =================================================
+                    PROJECT IMAGE
+                ================================================= */}
+
                 <div className="relative aspect-[4/5] overflow-hidden bg-white">
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} — ${project.category} project by BM KONXEPT LTD`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -86,15 +106,24 @@ export default function PortfolioGrid({
                   />
 
                   {/* Image Overlay */}
-                  <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/20" />
+                  <div
+                    className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/20"
+                    aria-hidden="true"
+                  />
 
                   {/* View Project */}
-                  <div className="absolute bottom-4 left-4 translate-y-3 rounded-full border border-white/20 bg-black/70 px-4 py-2 text-xs font-medium text-white opacity-0 backdrop-blur-md transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div
+                    className="absolute bottom-4 left-4 translate-y-3 rounded-full border border-white/20 bg-black/70 px-4 py-2 text-xs font-medium text-white opacity-0 backdrop-blur-md transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
+                    aria-hidden="true"
+                  >
                     View Project →
                   </div>
                 </div>
 
-                {/* Project Information */}
+                {/* =================================================
+                    PROJECT INFORMATION
+                ================================================= */}
+
                 <div className="p-5">
                   <div className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-gold">
                     {project.category}
@@ -107,6 +136,12 @@ export default function PortfolioGrid({
                   <p className="mt-3 line-clamp-2 text-sm leading-6 text-white/45">
                     {project.description}
                   </p>
+
+                  {/* Entity context for crawlers and assistive technology */}
+                  <p className="sr-only">
+                    {project.title} is a {project.category.toLowerCase()}{" "}
+                    project in the BM KONXEPT LTD creative portfolio.
+                  </p>
                 </div>
               </Link>
             </motion.article>
@@ -114,9 +149,15 @@ export default function PortfolioGrid({
         </AnimatePresence>
       </motion.div>
 
-      {/* Empty State */}
+      {/* =====================================================
+          EMPTY STATE
+      ===================================================== */}
+
       {items.length === 0 && (
-        <div className="rounded-2xl border border-white/10 bg-white/[0.02] py-16 text-center">
+        <div
+          className="rounded-2xl border border-white/10 bg-white/[0.02] py-16 text-center"
+          role="status"
+        >
           <p className="text-white/50">
             No projects available in this category yet.
           </p>

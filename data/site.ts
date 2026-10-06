@@ -1,76 +1,97 @@
 export const company = {
   name: "BM KONXEPT LTD",
+  alternateName: "BM KONXEPT",
   tagline: "Innovate • Connect • Elevate",
+
+  description:
+    "BM KONXEPT LTD is a Nigerian creative branding, graphic design, advertising, printing and business communication company helping businesses, organizations and individuals communicate and present themselves professionally.",
+
   phone: "+2349131057695",
   email: "blessedmediakonxept@gmail.com",
+
   instagram: "https://instagram.com/bmkonxept",
   tiktok: "https://www.tiktok.com/@bmkonxept",
+
   whatsapp:
     "https://wa.me/2349131057695?text=Hello%20BM%20KONXEPT,%20I%27d%20like%20to%20start%20a%20project.",
+
+  website: "https://bmkonxept.com",
+  country: "Nigeria",
 };
 
 export const services = [
   {
     title: "Logo Design",
     description:
-      "Professional logo designs that give your business a memorable and distinctive visual identity.",
+      "Professional logo design that gives businesses and organizations a memorable, distinctive and recognizable visual identity.",
   },
+
   {
     title: "Flyer & Poster Design",
     description:
-      "Eye-catching promotional designs for businesses, events, campaigns and announcements.",
+      "Eye-catching flyer and poster designs for businesses, events, campaigns, promotions and announcements.",
   },
+
   {
     title: "Social Media Graphics",
     description:
-      "Creative social media visuals designed to communicate your message and strengthen your online presence.",
+      "Creative social media graphics designed to communicate messages clearly and strengthen a brand's visual presence online.",
   },
+
   {
     title: "Business Cards & Stationery",
     description:
-      "Professional business cards, letterheads and stationery that keep your brand consistent.",
+      "Professional business cards, letterheads and stationery designed to keep business communication consistent and visually professional.",
   },
+
   {
     title: "Brochures & Company Profiles",
     description:
-      "Well-structured corporate materials that present your business, services and story professionally.",
+      "Well-structured brochures and company profiles that present businesses, services, products and organizational stories professionally.",
   },
+
   {
     title: "Packaging & Product Labels",
     description:
-      "Creative packaging and product label designs that help products stand out and communicate clearly.",
+      "Creative packaging and product label designs that help products stand out while communicating important visual information clearly.",
   },
+
   {
     title: "Catalogue Design",
     description:
-      "Organized and attractive catalogues for showcasing products, services and collections.",
+      "Organized and attractive catalogue designs for showcasing products, services, collections and business offerings.",
   },
+
   {
     title: "Roll-up Banners",
     description:
-      "Professional roll-up banner designs for exhibitions, events, offices, promotions and presentations.",
+      "Professional roll-up banner designs for exhibitions, events, offices, promotions, presentations and other display needs.",
   },
+
   {
     title: "Corporate Branding",
     description:
-      "Consistent visual branding solutions that help businesses build recognition and credibility.",
+      "Consistent corporate branding solutions that help businesses establish recognition, credibility and a professional visual presence.",
   },
+
   {
     title: "Printing Services",
     description:
-      "Quality printing support for business materials, promotional designs, corporate documents and more.",
+      "Printing support for business materials, promotional designs, corporate documents and other professionally designed communication materials.",
   },
+
   {
     title: "Marketing & Advertising Materials",
     description:
-      "Creative promotional materials designed to help businesses communicate, promote and connect with their audience.",
+      "Creative marketing and advertising materials designed to help businesses communicate, promote their offerings and connect with their audiences.",
   },
 ];
 
 export const portfolio = [
-  /* =========================
+  /* =========================================================
      BRANDING
-  ========================== */
+     Logo and visual identity projects
+  ========================================================== */
 
   {
     slug: "peculiar-family",
@@ -87,7 +108,7 @@ export const portfolio = [
     category: "Branding",
     image: "/images/20251022_182921.jpg",
     description:
-      "Logo design for Juda Beads, creating a recognizable identity for the brand.",
+      "Logo design for Juda Beads, creating a recognizable visual identity for the brand.",
   },
 
   {
@@ -101,11 +122,11 @@ export const portfolio = [
 
   {
     slug: "gci",
-    title: "GCI",
+    title: "CTECH",
     category: "Branding",
     image: "/images/20260415_095013.png",
     description:
-      "Clean and distinctive logo identity developed for GCI.",
+      "Clean and distinctive logo identity developed for CTECH.",
   },
 
   {
@@ -135,9 +156,10 @@ export const portfolio = [
       "Additional brand identity presentation for BP Estate & Properties.",
   },
 
-  /* =========================
+  /* =========================================================
      ADVERTISING
-  ========================== */
+     Business and promotional advertising projects
+  ========================================================== */
 
   {
     slug: "juda-beads-promotional-design",
@@ -145,7 +167,7 @@ export const portfolio = [
     category: "Advertising",
     image: "/images/20251013_231912.jpg",
     description:
-      "Promotional creative designed to showcase Juda Beads and communicate its offering visually.",
+      "Promotional advertising creative designed to showcase Juda Beads and communicate its offering visually.",
   },
 
   {
@@ -154,16 +176,16 @@ export const portfolio = [
     category: "Advertising",
     image: "/images/20260219_191631.jpg",
     description:
-      "Product-focused promotional design created for Anna Scent.",
+      "Product-focused promotional advertising design created for Anna Scent.",
   },
 
   {
     slug: "dajos-threadlines",
-    title: "Dajo's Threadlines",
+    title: "Djados Threadlines",
     category: "Advertising",
     image: "/images/20260220_145947.jpg",
     description:
-      "Business promotional creative designed for Dajo's Threadlines.",
+      "Business promotional creative designed for Djados Threadlines.",
   },
 
   {
@@ -172,12 +194,13 @@ export const portfolio = [
     category: "Advertising",
     image: "/images/20260129_211811.jpg",
     description:
-      "Promotional visual created to communicate a business and its offering effectively.",
+      "Business promotional visual created to communicate a business and its offering effectively.",
   },
 
-  /* =========================
+  /* =========================================================
      EVENT DESIGN
-  ========================== */
+     Event and programme-related creative projects
+  ========================================================== */
 
   {
     slug: "fogsu-friendly-match",
@@ -233,9 +256,10 @@ export const portfolio = [
       "Sports event promotional design created for FYB Clash 2025.",
   },
 
-  /* =========================
+  /* =========================================================
      SOCIAL MEDIA
-  ========================== */
+     Social media and digital communication creatives
+  ========================================================== */
 
   {
     slug: "birthday-creative",
@@ -261,7 +285,7 @@ export const portfolio = [
     category: "Social Media",
     image: "/images/20260401_013736.png",
     description:
-      "Social media visual created for April communication and engagement.",
+      "Social media visual created for April communication and audience engagement.",
   },
 
   {
@@ -270,7 +294,7 @@ export const portfolio = [
     category: "Social Media",
     image: "/images/20260423_160913.png",
     description:
-      "Social media creative designed for Friday engagement and communication.",
+      "Social media creative designed for Friday audience engagement and communication.",
   },
 
   {
@@ -300,9 +324,10 @@ export const portfolio = [
       "Personalized birthday social media creative created for Oji Gift.",
   },
 
-  /* =========================
+  /* =========================================================
      PRINT DESIGN
-  ========================== */
+     Print and business communication projects
+  ========================================================== */
 
   {
     slug: "corporate-print-creative",
