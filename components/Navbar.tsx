@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -12,7 +13,9 @@ const links = [
   ["Home", "/"],
   ["About", "/about"],
   ["Services", "/services"],
-  ["Portfolio", "/portfolio"],
+  ["Projects", "/portfolio"],
+  ["Case Studies", "/case-studies"],
+  ["FAQ", "/faq"],
   ["Contact", "/contact"],
 ];
 
@@ -21,10 +24,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/";
-    }
-
+    if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
@@ -32,13 +32,15 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* Main navbar */}
-      <nav className="border-b border-white/10 bg-black/80 backdrop-blur-xl">
+      <nav
+        aria-label="Main navigation"
+        className="border-b border-white/10 bg-black/80 backdrop-blur-xl"
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8">
-          {/* Logo */}
           <Link
             href="/"
             onClick={closeMenu}
+            aria-label="BM KONXEPT LTD home"
             className="group flex items-center gap-3"
           >
             <motion.div
@@ -68,7 +70,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop navigation */}
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-1 lg:flex">
             {links.map(([label, href]) => {
               const active = isActive(href);
 
@@ -76,7 +78,8 @@ export default function Navbar() {
                 <Link
                   key={label}
                   href={href}
-                  className={`relative rounded-full px-4 py-2 text-sm transition-all duration-300 ${
+                  aria-current={active ? "page" : undefined}
+                  className={`relative rounded-full px-3 py-2 text-sm transition-all duration-300 ${
                     active
                       ? "text-gold"
                       : "text-white/65 hover:bg-white/[0.04] hover:text-white"
@@ -99,28 +102,28 @@ export default function Navbar() {
               );
             })}
 
-            {/* Desktop CTA */}
             <motion.a
               href={company.whatsapp}
               target="_blank"
               rel="noreferrer"
               whileHover={{ y: -1 }}
               whileTap={{ scale: 0.98 }}
-              className="ml-3 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-black shadow-[0_0_25px_rgba(212,175,55,0.12)] transition hover:shadow-[0_0_30px_rgba(212,175,55,0.22)]"
+              className="ml-2 inline-flex items-center gap-2 rounded-full bg-gold px-4 py-2.5 text-sm font-bold text-black shadow-[0_0_25px_rgba(212,175,55,0.12)] transition hover:shadow-[0_0_30px_rgba(212,175,55,0.22)]"
             >
               Start a Project
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </motion.a>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu toggle */}
           <motion.button
             type="button"
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
-            onClick={() => setOpen(!open)}
+            aria-controls="mobile-navigation"
+            onClick={() => setOpen((current) => !current)}
             whileTap={{ scale: 0.92 }}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white transition hover:border-gold/40 hover:text-gold md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white transition hover:border-gold/40 hover:text-gold lg:hidden"
           >
             <AnimatePresence mode="wait" initial={false}>
               {open ? (
@@ -131,7 +134,7 @@ export default function Navbar() {
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-5 w-5" aria-hidden="true" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -141,7 +144,7 @@ export default function Navbar() {
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Menu className="h-5 w-5" />
+                  <Menu className="h-5 w-5" aria-hidden="true" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -153,48 +156,54 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="overflow-hidden border-b border-white/10 bg-black/95 backdrop-blur-2xl md:hidden"
+            className="overflow-hidden border-b border-white/10 bg-black/95 backdrop-blur-2xl lg:hidden"
           >
             <div className="mx-auto max-w-7xl px-5 pb-6 pt-4">
-              <div className="flex flex-col gap-1">
-                {links.map(([label, href], index) => {
-                  const active = isActive(href);
+              <nav aria-label="Mobile navigation">
+                <div className="flex flex-col gap-1">
+                  {links.map(([label, href], index) => {
+                    const active = isActive(href);
 
-                  return (
-                    <motion.div
-                      key={label}
-                      initial={{ opacity: 0, x: -15 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        delay: index * 0.04,
-                        duration: 0.25,
-                      }}
-                    >
-                      <Link
-                        href={href}
-                        onClick={closeMenu}
-                        className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base transition-all ${
-                          active
-                            ? "bg-gold/[0.08] font-semibold text-gold"
-                            : "text-white/75 hover:bg-white/[0.04] hover:text-white"
-                        }`}
+                    return (
+                      <motion.div
+                        key={label}
+                        initial={{ opacity: 0, x: -15 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          delay: index * 0.04,
+                          duration: 0.25,
+                        }}
                       >
-                        <span>{label}</span>
+                        <Link
+                          href={href}
+                          onClick={closeMenu}
+                          aria-current={active ? "page" : undefined}
+                          className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base transition-all ${
+                            active
+                              ? "bg-gold/[0.08] font-semibold text-gold"
+                              : "text-white/75 hover:bg-white/[0.04] hover:text-white"
+                          }`}
+                        >
+                          <span>{label}</span>
 
-                        {active && (
-                          <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-                        )}
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                          {active && (
+                            <span
+                              aria-hidden="true"
+                              className="h-1.5 w-1.5 rounded-full bg-gold"
+                            />
+                          )}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </nav>
 
-              {/* Mobile CTA */}
               <motion.a
                 href={company.whatsapp}
                 target="_blank"
@@ -206,7 +215,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.98 }}
                 className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-gold px-5 py-3.5 font-bold text-black"
               >
-                <MessageCircle className="h-4 w-4" />
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
                 Chat on WhatsApp
               </motion.a>
 
