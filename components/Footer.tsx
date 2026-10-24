@@ -32,7 +32,6 @@ export default function Footer() {
                 aria-label="BM KONXEPT LTD home"
                 className="inline-flex items-center"
               >
-                {/* Change this path to your existing logo filename if different. */}
                 <img
                   src="/logo.png"
                   alt="BM KONXEPT LTD"
@@ -94,6 +93,7 @@ export default function Footer() {
                     <Mail
                       size={18}
                       className="mt-0.5 shrink-0 text-[#d4af37]"
+                      aria-hidden="true"
                     />
                     <span className="whitespace-nowrap">
                       blessedmediakonxept@gmail.com
@@ -107,6 +107,7 @@ export default function Footer() {
                     <Phone
                       size={18}
                       className="shrink-0 text-[#d4af37]"
+                      aria-hidden="true"
                     />
                     <span>07087866530</span>
                   </a>
@@ -115,11 +116,12 @@ export default function Footer() {
                     href="https://wa.me/2347087866530?text=Hello%20BM%20KONXEPT%2C%20I%27d%20like%20to%20start%20a%20project."
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Chat with BM KONXEPT on WhatsApp"
                     className="inline-flex items-center gap-2 rounded-full border border-[#d4af37]/50 px-4 py-2.5 text-sm font-medium text-[#d4af37] transition-colors hover:bg-[#d4af37] hover:text-black"
                   >
-                    <MessageCircle size={17} />
+                    <MessageCircle size={17} aria-hidden="true" />
                     Chat on WhatsApp
-                    <ArrowUpRight size={14} />
+                    <ArrowUpRight size={14} aria-hidden="true" />
                   </a>
                 </div>
               </div>
@@ -141,7 +143,7 @@ export default function Footer() {
                     aria-label="Follow BM KONXEPT on Instagram"
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
                   >
-                    <Instagram size={19} />
+                    <Instagram size={19} aria-hidden="true" />
                   </a>
 
                   <a
@@ -151,7 +153,22 @@ export default function Footer() {
                     aria-label="Follow BM KONXEPT on TikTok"
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
                   >
-                    <span className="text-lg font-bold">♪</span>
+                    <span className="text-lg font-bold" aria-hidden="true">
+                      ♪
+                    </span>
+                  </a>
+
+                  <a
+                    href="https://www.pinterest.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Find BM KONXEPT on Pinterest"
+                    title="Pinterest"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
+                  >
+                    <span className="text-lg font-bold" aria-hidden="true">
+                      P
+                    </span>
                   </a>
                 </div>
               </div>

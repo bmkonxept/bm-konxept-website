@@ -91,11 +91,11 @@ export default function PortfolioGrid({
                     alt={`${project.title} — ${project.category} project by BM KONXEPT LTD`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-contain transition-transform duration-700 group-hover:scale-[1.02]"
                   />
 
                   <div
-                    className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/20"
+                    className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/10"
                     aria-hidden="true"
                   />
 

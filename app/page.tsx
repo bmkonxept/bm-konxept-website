@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,10 +11,10 @@ import {
 } from "lucide-react";
 
 import ServiceCards from "@/components/ServiceCards";
-import PortfolioGrid from "@/components/PortfolioGrid";
+import CaseStudiesPreview from "@/components/CaseStudiesPreview";
 import AnimatedStats from "@/components/AnimatedStats";
 import Footer from "@/components/Footer";
-import { company, portfolio, services } from "@/data/site";
+import { company, services } from "@/data/site";
 
 const siteUrl = "https://bmkonxept.com";
 
@@ -75,7 +76,7 @@ export const metadata: Metadata = {
 };
 
 /* =========================================================
-   HOMEPAGE ORGANIZATION ENTITY
+   ORGANIZATION ENTITY
 ========================================================= */
 
 const organizationSchema = {
@@ -96,10 +97,7 @@ const organizationSchema = {
   description: company.description,
   email: company.email,
   telephone: company.phone,
-  sameAs: [
-    company.instagram,
-    company.tiktok,
-  ].filter(Boolean),
+  sameAs: [company.instagram, company.tiktok].filter(Boolean),
   contactPoint: {
     "@type": "ContactPoint",
     "@id": `${siteUrl}/#contactpoint`,
@@ -190,50 +188,65 @@ const serviceListSchema = {
   "@type": "ItemList",
   "@id": `${siteUrl}/#service-list`,
   name: "BM KONXEPT LTD Creative Services",
-  description:
-    "Current creative services offered by BM KONXEPT LTD.",
+  description: "Current creative services offered by BM KONXEPT LTD.",
   numberOfItems: services.length,
   itemListOrder: "https://schema.org/ItemListOrderAscending",
   itemListElement: serviceItems,
 };
 
 /* =========================================================
-   PORTFOLIO LIST
+   HOMEPAGE CASE STUDIES
+   These items appear on the homepage only.
+   They do not link to separate case-study pages.
 ========================================================= */
 
-const portfolioItems = portfolio.map((project, index) => ({
-  "@type": "ListItem",
-  position: index + 1,
-  name: project.title,
-  url: `${siteUrl}/projects/${project.slug}`,
-  item: {
-    "@type": "CreativeWork",
-    "@id": `${siteUrl}/projects/${project.slug}#creativework`,
-    name: project.title,
-    description: project.description,
-    url: `${siteUrl}/projects/${project.slug}`,
-    image: `${siteUrl}${project.image.startsWith("/") ? "" : "/"}${project.image}`,
-    genre: project.category,
-    creator: {
-      "@id": `${siteUrl}/#organization`,
-    },
-    publisher: {
-      "@id": `${siteUrl}/#organization`,
-    },
-    inLanguage: "en-NG",
+const homepageCaseStudies = [
+  {
+    name: "Anna Scent",
+    category: "Branding & Visual Design",
   },
-}));
+  {
+    name: "Djados Threadlines",
+    category: "Brand Identity",
+  },
+  {
+    name: "FOGSU FUTMX Bus Transit",
+    category: "Advertising & Promotional Design",
+  },
+  {
+    name: "FOGSU Hiking 2026",
+    category: "Event Design",
+  },
+  {
+    name: "Juda Beads",
+    category: "Branding & Promotional Design",
+  },
+  {
+    name: "NAEEES Executive ID Cards",
+    category: "Print Design",
+  },
+  {
+    name: "Peculiar Family",
+    category: "Visual Design",
+  },
+];
 
-const portfolioListSchema = {
+const caseStudiesListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "@id": `${siteUrl}/#portfolio-list`,
-  name: "BM KONXEPT LTD Creative Portfolio",
+  "@id": `${siteUrl}/#case-studies-list`,
+  name: "BM KONXEPT LTD Selected Case Studies",
   description:
-    "Selected branding, advertising, social media, event design and print design projects created by BM KONXEPT LTD.",
-  numberOfItems: portfolio.length,
+    "Selected branding, promotional design, event graphics and print design case studies displayed on the BM KONXEPT LTD homepage.",
+  numberOfItems: homepageCaseStudies.length,
   itemListOrder: "https://schema.org/ItemListOrderAscending",
-  itemListElement: portfolioItems,
+  itemListElement: homepageCaseStudies.map((study, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: study.name,
+    description: `${study.category} showcase by BM KONXEPT LTD.`,
+    url: `${siteUrl}/#case-studies`,
+  })),
 };
 
 /* =========================================================
@@ -260,12 +273,12 @@ const breadcrumbSchema = {
 
 const stats = [
   {
-    value: 100,
+    value: 150,
     suffix: "+",
-    label: "Designs Delivered",
+    label: "Projects Delivered",
   },
   {
-    value: 40,
+    value: 70,
     suffix: "+",
     label: "Clients Served",
   },
@@ -283,9 +296,7 @@ const stats = [
 export default function Home() {
   return (
     <main>
-      {/* =====================================================
-          HOMEPAGE STRUCTURED DATA
-      ===================================================== */}
+      {/* HOMEPAGE STRUCTURED DATA */}
 
       <script
         type="application/ld+json"
@@ -295,15 +306,13 @@ export default function Home() {
             websiteSchema,
             homePageSchema,
             serviceListSchema,
-            portfolioListSchema,
+            caseStudiesListSchema,
             breadcrumbSchema,
           ]),
         }}
       />
 
-      {/* =====================================================
-          HERO
-      ===================================================== */}
+      {/* HERO */}
 
       <section
         aria-labelledby="home-hero-heading"
@@ -320,15 +329,9 @@ export default function Home() {
         />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-14 py-20 lg:grid-cols-[1.05fr_.95fr]">
-          {/* HERO TEXT */}
-
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gold">
-              <Sparkles
-                className="h-3.5 w-3.5"
-                aria-hidden="true"
-              />
-
+              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
               Creative solutions for ambitious brands
             </div>
 
@@ -358,16 +361,12 @@ export default function Home() {
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-4 font-bold text-black transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_35px_rgba(212,175,55,0.2)]"
               >
                 Start a Project
-
-                <ArrowRight
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
 
               <Link
-                href="/portfolio"
-                aria-label="View the BM KONXEPT LTD creative portfolio"
+                href="#case-studies"
+                aria-label="Explore selected BM KONXEPT LTD case studies on this page"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.02] px-7 py-4 font-semibold text-white/80 transition duration-300 hover:border-gold/40 hover:bg-gold/[0.04] hover:text-white"
               >
                 Explore Our Creative Work
@@ -383,8 +382,6 @@ export default function Home() {
               <span>Elevate</span>
             </div>
           </div>
-
-          {/* HERO LOGO */}
 
           <div className="relative mx-auto w-full max-w-xl">
             <div
@@ -406,7 +403,6 @@ export default function Home() {
                 <div className="text-xs uppercase tracking-[0.2em] text-gold">
                   BM KONXEPT LTD
                 </div>
-
                 <div className="mt-1 text-sm text-white/70">
                   Branding • Design • Printing • Advertising
                 </div>
@@ -416,9 +412,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* =====================================================
-          STATISTICS
-      ===================================================== */}
+      {/* STATISTICS */}
 
       <section
         aria-labelledby="track-record-heading"
@@ -433,14 +427,11 @@ export default function Home() {
               Our track record
             </h2>
           </div>
-
           <AnimatedStats stats={stats} />
         </div>
       </section>
 
-      {/* =====================================================
-          ABOUT INTRO
-      ===================================================== */}
+      {/* ABOUT INTRO */}
 
       <section
         aria-labelledby="about-intro-heading"
@@ -486,15 +477,11 @@ export default function Home() {
                 "Quality-focused execution",
                 "Client-centered service",
               ].map((item) => (
-                <div
-                  key={item}
-                  className="flex gap-3 text-sm text-white/75"
-                >
+                <div key={item} className="flex gap-3 text-sm text-white/75">
                   <Check
                     className="h-5 w-5 shrink-0 text-gold"
                     aria-hidden="true"
                   />
-
                   {item}
                 </div>
               ))}
@@ -506,19 +493,13 @@ export default function Home() {
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-gold transition hover:text-white"
             >
               Learn more about BM KONXEPT LTD
-
-              <ArrowRight
-                className="h-4 w-4"
-                aria-hidden="true"
-              />
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          SERVICES
-      ===================================================== */}
+      {/* SERVICES */}
 
       <section
         aria-labelledby="services-heading"
@@ -550,11 +531,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 text-sm font-semibold text-gold transition hover:text-white"
             >
               View all BM KONXEPT LTD services
-
-              <ArrowRight
-                className="h-4 w-4"
-                aria-hidden="true"
-              />
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
 
@@ -562,9 +539,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* =====================================================
-          PROCESS
-      ===================================================== */}
+      {/* PROCESS */}
 
       <section
         aria-labelledby="process-heading"
@@ -586,14 +561,8 @@ export default function Home() {
 
           <div className="card grid gap-8 p-7 sm:p-10 lg:grid-cols-3">
             <div>
-              <div className="text-sm font-medium text-gold">
-                01
-              </div>
-
-              <h3 className="mt-4 text-2xl font-bold">
-                Understand
-              </h3>
-
+              <div className="text-sm font-medium text-gold">01</div>
+              <h3 className="mt-4 text-2xl font-bold">Understand</h3>
               <p className="mt-2 text-sm leading-6 text-white/50">
                 We listen to your goals, audience, project requirements, and
                 brand direction.
@@ -601,14 +570,8 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="text-sm font-medium text-gold">
-                02
-              </div>
-
-              <h3 className="mt-4 text-2xl font-bold">
-                Create
-              </h3>
-
+              <div className="text-sm font-medium text-gold">02</div>
+              <h3 className="mt-4 text-2xl font-bold">Create</h3>
               <p className="mt-2 text-sm leading-6 text-white/50">
                 We turn ideas into clear, compelling visual communication
                 designed around your message.
@@ -616,14 +579,8 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="text-sm font-medium text-gold">
-                03
-              </div>
-
-              <h3 className="mt-4 text-2xl font-bold">
-                Elevate
-              </h3>
-
+              <div className="text-sm font-medium text-gold">03</div>
+              <h3 className="mt-4 text-2xl font-bold">Elevate</h3>
               <p className="mt-2 text-sm leading-6 text-white/50">
                 We deliver polished creative assets prepared for digital and
                 print use.
@@ -633,50 +590,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* =====================================================
-          PORTFOLIO
-      ===================================================== */}
+      {/* SELECTED CASE STUDIES — HOMEPAGE ONLY */}
 
-      <section
-        aria-labelledby="portfolio-heading"
-        className="px-5 py-24 md:px-8"
-      >
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-gold">
-            Selected work
-          </p>
+      <CaseStudiesPreview />
 
-          <div className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-            <div>
-              <h2
-                id="portfolio-heading"
-                className="text-4xl font-bold tracking-tight sm:text-5xl"
-              >
-                Creative work that communicates.
-              </h2>
-
-              <p className="mt-4 max-w-xl text-white/45">
-                Explore selected branding, advertising, event, and social
-                media work created by BM KONXEPT LTD.
-              </p>
-            </div>
-
-            <Link
-              href="/portfolio"
-              aria-label="View the full BM KONXEPT LTD portfolio"
-              className="shrink-0 text-sm font-semibold text-gold transition hover:text-white"
-            >
-              View the full BM KONXEPT portfolio →
-            </Link>
-          </div>
-
-          <PortfolioGrid limit={9} />
-        </div>
-      </section>
-
-      {/* =====================================================
-          BRAND MESSAGE
-      ===================================================== */}
+      {/* BRAND MESSAGE */}
 
       <section
         aria-labelledby="brand-message-heading"
@@ -688,10 +606,7 @@ export default function Home() {
             aria-hidden="true"
           />
 
-          <h2
-            id="brand-message-heading"
-            className="sr-only"
-          >
+          <h2 id="brand-message-heading" className="sr-only">
             BM KONXEPT brand message
           </h2>
 
@@ -706,9 +621,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* =====================================================
-          INTERNAL NAVIGATION
-      ===================================================== */}
+      {/* INTERNAL NAVIGATION */}
 
       <section
         aria-labelledby="home-navigation-heading"
@@ -729,8 +642,8 @@ export default function Home() {
 
             <p className="mt-4 max-w-2xl leading-7 text-white/45">
               Learn about BM KONXEPT LTD, explore our current creative
-              services, view our portfolio and contact us about your next
-              project.
+              services and projects, review our selected case studies above,
+              and contact us about your next project.
             </p>
 
             <nav
@@ -742,11 +655,7 @@ export default function Home() {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white/80 transition hover:border-gold/40 hover:text-white"
               >
                 About BM KONXEPT LTD
-
-                <ArrowRight
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
 
               <Link
@@ -754,23 +663,23 @@ export default function Home() {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white/80 transition hover:border-gold/40 hover:text-white"
               >
                 Our Services
-
-                <ArrowRight
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
 
               <Link
                 href="/portfolio"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white/80 transition hover:border-gold/40 hover:text-white"
               >
-                Creative Portfolio
+                Projects
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
 
-                <ArrowRight
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
+              <Link
+                href="/faq"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white/80 transition hover:border-gold/40 hover:text-white"
+              >
+                FAQ
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
 
               <Link
@@ -778,20 +687,14 @@ export default function Home() {
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 font-bold text-black transition hover:-translate-y-0.5"
               >
                 Contact BM KONXEPT
-
-                <ArrowRight
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </nav>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          FINAL CTA
-      ===================================================== */}
+      {/* FINAL CTA */}
 
       <section
         aria-labelledby="final-cta-heading"
@@ -801,7 +704,7 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-gold">
-                Let's create
+                Let&apos;s create
               </p>
 
               <h2
@@ -812,8 +715,8 @@ export default function Home() {
               </h2>
 
               <p className="mt-5 max-w-2xl leading-7 text-white/60">
-                Tell BM KONXEPT LTD what you need and let's turn the idea into
-                professional creative work.
+                Tell BM KONXEPT LTD what you need and let&apos;s turn the idea
+                into professional creative work.
               </p>
             </div>
 
@@ -824,20 +727,14 @@ export default function Home() {
               aria-label="Contact BM KONXEPT LTD on WhatsApp"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-4 font-bold text-black transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_35px_rgba(212,175,55,0.2)]"
             >
-              <MessageCircle
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-
+              <MessageCircle className="h-5 w-5" aria-hidden="true" />
               WhatsApp Us
             </a>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          FOOTER
-      ===================================================== */}
+      {/* FOOTER */}
 
       <Footer />
     </main>

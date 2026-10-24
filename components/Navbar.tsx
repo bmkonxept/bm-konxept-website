@@ -14,7 +14,6 @@ const links = [
   ["About", "/about"],
   ["Services", "/services"],
   ["Projects", "/portfolio"],
-  ["Case Studies", "/case-studies"],
   ["FAQ", "/faq"],
   ["Contact", "/contact"],
 ];
@@ -25,7 +24,7 @@ export default function Navbar() {
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   const closeMenu = () => setOpen(false);
@@ -118,7 +117,9 @@ export default function Navbar() {
           {/* Mobile menu toggle */}
           <motion.button
             type="button"
-            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              open ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={open}
             aria-controls="mobile-navigation"
             onClick={() => setOpen((current) => !current)}
