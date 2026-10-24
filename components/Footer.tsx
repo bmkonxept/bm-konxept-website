@@ -1,9 +1,9 @@
-
 "use client";
 
 import Link from "next/link";
 import {
   Instagram,
+  Linkedin,
   Mail,
   Phone,
   MessageCircle,
@@ -141,6 +141,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow BM KONXEPT on Instagram"
+                    title="Instagram"
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
                   >
                     <Instagram size={19} aria-hidden="true" />
@@ -151,6 +152,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow BM KONXEPT on TikTok"
+                    title="TikTok"
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
                   >
                     <span className="text-lg font-bold" aria-hidden="true">
@@ -169,6 +171,17 @@ export default function Footer() {
                     <span className="text-lg font-bold" aria-hidden="true">
                       P
                     </span>
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/company/bmkonxept/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow BM KONXEPT LTD on LinkedIn"
+                    title="LinkedIn"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
+                  >
+                    <Linkedin size={19} aria-hidden="true" />
                   </a>
                 </div>
               </div>
