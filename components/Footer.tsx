@@ -19,6 +19,21 @@ const exploreLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+function TikTokLogo() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="21"
+      height="21"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.9 2.9 0 0 1-2.9 2.75 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9c.3 0 .6.05.88.14V9.23a6.4 6.4 0 0 0-.88-.06 6.35 6.35 0 0 0-6.35 6.35 6.35 6.35 0 0 0 6.35 6.35 6.35 6.35 0 0 0 6.35-6.35V8.55a8.2 8.2 0 0 0 4.8 1.55V6.66a4.8 4.8 0 0 1-1.03.03Z" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="border-t border-[#d4af37]/25 bg-[#050505] px-4 py-10 text-white sm:px-6 lg:px-8">
@@ -155,9 +170,7 @@ export default function Footer() {
                     title="TikTok"
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
                   >
-                    <span className="text-lg font-bold" aria-hidden="true">
-                      ♪
-                    </span>
+                    <TikTokLogo />
                   </a>
 
                   <a
