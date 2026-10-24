@@ -135,7 +135,7 @@ Service: ${selectedService || "Not specified"}
 Project details:
 ${details || "I'd like to discuss a project."}`;
 
-  const whatsappLink = `https://wa.me/2349131057695?text=${encodeURIComponent(
+  const whatsappLink = `https://wa.me/2347087866530?text=${encodeURIComponent(
     whatsappMessage
   )}`;
 
