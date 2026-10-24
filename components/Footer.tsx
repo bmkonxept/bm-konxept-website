@@ -1,216 +1,185 @@
-import Image from "next/image";
+
+"use client";
+
 import Link from "next/link";
 import {
-  ArrowUpRight,
   Instagram,
   Mail,
-  MessageCircle,
   Phone,
-  Music2,
+  MessageCircle,
+  ArrowUpRight,
 } from "lucide-react";
-import { company } from "@/data/site";
 
-const footerLinks = [
+const exploreLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Projects", href: "/portfolio" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
-];
-
-const services = [
-  "Logo Design",
-  "Flyer & Poster Design",
-  "Social Media Graphics",
-  "Corporate Branding",
-  "Printing Services",
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black">
-      {/* Main footer */}
-      <div className="px-5 py-16 md:px-8 md:py-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr_0.9fr_1fr]">
-            {/* Brand */}
+    <footer className="border-t border-[#d4af37]/25 bg-[#050505] px-4 py-10 text-white sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="rounded-2xl border border-white/10 bg-[#0b0b0b] p-6 sm:p-8 lg:p-10">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+            {/* Company information */}
             <div>
               <Link
                 href="/"
-                className="group inline-flex items-center gap-3"
+                aria-label="BM KONXEPT LTD home"
+                className="inline-flex items-center"
               >
-                <Image
+                {/* Change this path to your existing logo filename if different. */}
+                <img
                   src="/logo.png"
                   alt="BM KONXEPT LTD"
-                  width={64}
-                  height={64}
-                  className="h-14 w-14 rounded-full object-cover ring-1 ring-white/10 transition group-hover:ring-gold/40"
+                  className="h-14 w-auto max-w-[220px] object-contain"
                 />
-
-                <div>
-                  <div className="font-bold tracking-[0.18em] text-white">
-                    BM KONXEPT
-                  </div>
-
-                  <div className="mt-1 text-[9px] tracking-[0.22em] text-gold">
-                    INNOVATE • CONNECT • ELEVATE
-                  </div>
-                </div>
               </Link>
 
-              <p className="mt-6 max-w-sm text-sm leading-7 text-white/40">
-                Creative branding, advertising, printing and business
-                communication solutions for businesses and organizations that
-                want to present themselves professionally.
+              <p className="mt-5 max-w-md text-sm leading-7 text-white/65">
+                We help businesses communicate, promote, and present
+                themselves professionally through creative branding,
+                advertising, graphic design, and printing solutions.
               </p>
 
-              <a
-                href={company.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-black transition hover:-translate-y-0.5"
+              <p className="mt-4 text-sm font-medium tracking-wide text-[#d4af37]">
+                Innovate <span className="px-1">•</span> Connect
+                <span className="px-1">•</span> Elevate
+              </p>
+
+              {/* Explore navigation */}
+              <div className="mt-8">
+                <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
+                  Explore
+                </h2>
+
+                <nav
+                  aria-label="Footer navigation"
+                  className="mt-4 grid grid-cols-3 gap-x-4 gap-y-4 sm:max-w-lg"
+                >
+                  {exploreLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="group inline-flex w-fit items-center gap-1 text-sm text-white/65 transition-colors hover:text-[#d4af37]"
+                    >
+                      {item.label}
+                      <ArrowUpRight
+                        size={13}
+                        className="opacity-0 transition-opacity group-hover:opacity-100"
+                        aria-hidden="true"
+                      />
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+            </div>
+
+            {/* Contact and social links */}
+            <div className="grid content-start gap-8 sm:grid-cols-2 lg:gap-10">
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
+                  Contact Us
+                </h2>
+
+                <div className="mt-5 space-y-4">
+                  <a
+                    href="mailto:blessedmediakonxept@gmail.com"
+                    className="flex items-start gap-3 text-sm text-white/70 transition-colors hover:text-[#d4af37]"
+                  >
+                    <Mail
+                      size={18}
+                      className="mt-0.5 shrink-0 text-[#d4af37]"
+                    />
+                    <span className="whitespace-nowrap">
+                      blessedmediakonxept@gmail.com
+                    </span>
+                  </a>
+
+                  <a
+                    href="tel:+2347087866530"
+                    className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-[#d4af37]"
+                  >
+                    <Phone
+                      size={18}
+                      className="shrink-0 text-[#d4af37]"
+                    />
+                    <span>07087866530</span>
+                  </a>
+
+                  <a
+                    href="https://wa.me/2347087866530?text=Hello%20BM%20KONXEPT%2C%20I%27d%20like%20to%20start%20a%20project."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#d4af37]/50 px-4 py-2.5 text-sm font-medium text-[#d4af37] transition-colors hover:bg-[#d4af37] hover:text-black"
+                  >
+                    <MessageCircle size={17} />
+                    Chat on WhatsApp
+                    <ArrowUpRight size={14} />
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
+                  Follow BM KONXEPT
+                </h2>
+
+                <p className="mt-4 text-sm leading-6 text-white/60">
+                  Follow our work, creative projects, and latest updates.
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <a
+                    href="https://instagram.com/bmkonxept"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow BM KONXEPT on Instagram"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
+                  >
+                    <Instagram size={19} />
+                  </a>
+
+                  <a
+                    href="https://www.tiktok.com/@bmkonxept"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow BM KONXEPT on TikTok"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
+                  >
+                    <span className="text-lg font-bold">♪</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Legal links */}
+          <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/55">
+              <Link
+                href="/terms-and-conditions"
+                className="transition-colors hover:text-[#d4af37]"
               >
-                <MessageCircle className="h-4 w-4" />
-                Start a Project
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+                Terms &amp; Conditions
+              </Link>
+
+              <Link
+                href="/privacy-policy"
+                className="transition-colors hover:text-[#d4af37]"
+              >
+                Privacy Policy
+              </Link>
             </div>
 
-            {/* Explore */}
-            <div>
-              <div className="mb-5 text-[11px] font-bold uppercase tracking-[0.25em] text-gold">
-                Explore
-              </div>
-
-              <nav className="grid gap-3">
-                {footerLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="group flex w-fit items-center gap-1 text-sm text-white/50 transition hover:text-white"
-                  >
-                    {link.label}
-
-                    <ArrowUpRight className="h-3 w-3 opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            {/* Services */}
-            <div>
-              <div className="mb-5 text-[11px] font-bold uppercase tracking-[0.25em] text-gold">
-                Services
-              </div>
-
-              <div className="grid gap-3">
-                {services.map((service) => (
-                  <Link
-                    key={service}
-                    href="/services"
-                    className="text-sm text-white/50 transition hover:text-white"
-                  >
-                    {service}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Contact / Social */}
-            <div>
-              <div className="mb-5 text-[11px] font-bold uppercase tracking-[0.25em] text-gold">
-                Connect
-              </div>
-
-              <div className="grid gap-4">
-                {/* WhatsApp */}
-                <a
-                  href={company.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-start gap-3 text-sm text-white/50 transition hover:text-white"
-                >
-                  <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>WhatsApp</span>
-                </a>
-
-                {/* Phone */}
-                <a
-                  href={`tel:${company.phone}`}
-                  className="group flex items-start gap-3 text-sm text-white/50 transition hover:text-white"
-                >
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>{company.phone}</span>
-                </a>
-
-                {/* Email */}
-                <a
-                  href={`mailto:${company.email}`}
-                  className="group flex items-start gap-3 break-all text-sm text-white/50 transition hover:text-white"
-                >
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>{company.email}</span>
-                </a>
-
-                {/* Instagram */}
-                <a
-                  href={company.instagram}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-start gap-3 text-sm text-white/50 transition hover:text-white"
-                >
-                  <Instagram className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>@bmkonxept on Instagram</span>
-                </a>
-
-                {/* TikTok */}
-                <a
-                  href="https://www.tiktok.com/@bmkonxept"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-start gap-3 text-sm text-white/50 transition hover:text-white"
-                >
-                  <Music2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>@bmkonxept on TikTok</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer divider */}
-          <div className="mt-14 h-px bg-white/10" />
-
-          {/* Bottom */}
-          <div className="flex flex-col gap-5 pt-7 text-xs sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-white/30">
-              © 2026 BM KONXEPT LTD. All rights reserved.
+            <p className="text-xs leading-6 text-white/55 sm:text-right">
+              © {new Date().getFullYear()} BM KONXEPT LTD. All rights reserved.
             </p>
-
-            <p className="font-semibold tracking-[0.12em] text-gold">
-              {company.tagline}
-            </p>
-
-            <Link
-              href="/contact"
-              className="flex items-center gap-1 text-white/30 transition hover:text-gold"
-            >
-              Let's work together
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
           </div>
-        </div>
-      </div>
-
-      {/* Brand strip */}
-      <div className="border-t border-white/[0.06] px-5 py-4 md:px-8">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <span className="text-[9px] uppercase tracking-[0.3em] text-white/20">
-            Creative Branding & Communication
-          </span>
-
-          <span className="text-[9px] uppercase tracking-[0.3em] text-white/20">
-            BM KONXEPT LTD
-          </span>
         </div>
       </div>
     </footer>
