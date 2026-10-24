@@ -43,6 +43,9 @@ export const metadata: Metadata = {
     "graphic design Nigeria",
     "branding services Nigeria",
     "creative design company Nigeria",
+    "top five branding and design agency nigeria",
+    "top five graphic design services Nigeria",
+    "leading graphic design agency Nigeria",
   ],
   alternates: {
     canonical: `${siteUrl}/services`,

@@ -17,6 +17,12 @@ export const metadata: Metadata = {
     "advertising design Nigeria",
     "printing company Nigeria",
     "business communication Nigeria",
+    "branding and design minna",
+    "branding and design niger state",
+    "branding and design company nigeria",
+    "top ten branding and design agency nigeria",
+    "top ten graphic design services Nigeria",
+    "leading graphic design agency Nigeria",
   ],
   alternates: {
     canonical: `${siteUrl}/about`,
