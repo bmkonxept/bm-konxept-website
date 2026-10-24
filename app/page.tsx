@@ -25,11 +25,12 @@ const siteUrl = "https://bmkonxept.com";
 export const metadata: Metadata = {
   title: "BM KONXEPT LTD | Branding, Graphic Design & Printing in Nigeria",
   description:
-    "BM KONXEPT LTD is a Nigerian creative company providing logo design, flyer and poster design, social media graphics, business cards and stationery, branding, advertising design and printing solutions.",
+    "BM KONXEPT LTD is a Nigerian branding & creative company providing logo design, flyer and poster design, social media graphics, business cards and stationery, branding, advertising design and printing solutions.",
   keywords: [
     "BM KONXEPT LTD",
     "BM KONXEPT",
     "BM KONXEPT Nigeria",
+    "creative agency Nigeria",
     "creative company Nigeria",
     "branding company Nigeria",
     "graphic design company Nigeria",
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     "advertising design Nigeria",
     "printing Nigeria",
     "creative branding Nigeria",
-    "graphic design Lagos",
+    "graphic design abuja",
   ],
   alternates: {
     canonical: siteUrl,
