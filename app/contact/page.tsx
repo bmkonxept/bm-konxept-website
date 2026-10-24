@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   Instagram,
+  Linkedin,
   Mail,
   MessageCircle,
   Music2,
@@ -453,6 +454,45 @@ ${details || "I'd like to discuss a project."}`;
 
               <p className="mt-3 text-sm leading-6 text-white/40">
                 Follow BM KONXEPT on TikTok for creative content and updates.
+              </p>
+            </a>
+
+            {/* =================================================
+                LINKEDIN — ADDED
+            ================================================= */}
+
+            <a
+              href="https://www.linkedin.com/company/bmkonxept/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit BM KONXEPT LTD on LinkedIn"
+              className="group rounded-3xl border border-white/10 bg-white/[0.025] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-gold/30 hover:bg-gold/[0.04]"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-gold/20 bg-gold/[0.06] text-gold">
+                  <Linkedin
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <ArrowRight
+                  className="h-4 w-4 text-white/20 transition group-hover:translate-x-1 group-hover:text-gold"
+                  aria-hidden="true"
+                />
+              </div>
+
+              <p className="mt-7 text-xs font-bold uppercase tracking-[0.2em] text-gold">
+                LinkedIn
+              </p>
+
+              <h3 className="mt-2 text-xl font-bold text-white">
+                BM KONXEPT LTD
+              </h3>
+
+              <p className="mt-3 text-sm leading-6 text-white/40">
+                Connect with BM KONXEPT on LinkedIn for company updates and
+                professional work.
               </p>
             </a>
           </div>
