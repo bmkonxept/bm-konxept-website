@@ -34,6 +34,21 @@ function TikTokLogo() {
   );
 }
 
+function PinterestLogo() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="21"
+      height="21"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M12 2a10 10 0 0 0-3.64 19.31c-.02-.78 0-1.72.19-2.57l1.35-5.73s-.34-.68-.34-1.69c0-1.58.92-2.76 2.06-2.76.97 0 1.44.73 1.44 1.6 0 .98-.63 2.44-.95 3.8-.27 1.14.57 2.06 1.69 2.06 2.03 0 3.4-2.61 3.4-5.7 0-2.35-1.58-4.11-4.45-4.11-3.24 0-5.26 2.42-5.26 5.12 0 .93.28 1.59.72 2.1.2.24.23.33.16.6l-.23.94c-.08.3-.3.41-.56.3-1.55-.63-2.27-2.32-2.27-4.22 0-3.14 2.65-6.9 7.91-6.9 4.23 0 7.01 3.06 7.01 6.35 0 4.35-2.42 7.6-5.99 7.6-1.2 0-2.33-.65-2.72-1.39l-.78 3.1c-.23.88-.68 1.76-1.09 2.44A10 10 0 1 0 12 2Z" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="border-t border-[#d4af37]/25 bg-[#050505] px-4 py-10 text-white sm:px-6 lg:px-8">
@@ -181,9 +196,7 @@ export default function Footer() {
                     title="Pinterest"
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-[#d4af37] hover:bg-[#d4af37] hover:text-black"
                   >
-                    <span className="text-lg font-bold" aria-hidden="true">
-                      P
-                    </span>
+                    <PinterestLogo />
                   </a>
 
                   <a
