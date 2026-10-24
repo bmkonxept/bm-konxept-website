@@ -3,17 +3,18 @@ import Link from "next/link";
 import {
   ArrowRight,
   MessageCircle,
-  Palette,
-  Megaphone,
   Sparkles,
-  CreditCard,
   CheckCircle2,
 } from "lucide-react";
 
 import Footer from "@/components/Footer";
+import ServiceCards from "@/components/ServiceCards";
 import { company, services } from "@/data/site";
 
 const siteUrl = "https://bmkonxept.com";
+
+const servicesDescription =
+  "Explore BM KONXEPT LTD's creative services in Nigeria, including logo design, flyer and poster design, social media graphics, business cards and stationery, brochures, company profiles, packaging, product labels, catalogues, corporate branding, printing and marketing materials.";
 
 /* =========================================================
    PAGE METADATA
@@ -21,8 +22,7 @@ const siteUrl = "https://bmkonxept.com";
 
 export const metadata: Metadata = {
   title: "Services | Branding, Graphic Design & Printing | BM KONXEPT LTD",
-  description:
-    "Explore BM KONXEPT LTD creative services, including logo design, flyer and poster design, social media graphics, and business cards and stationery for businesses and organizations in Nigeria.",
+  description: servicesDescription,
   keywords: [
     "BM KONXEPT LTD services",
     "BM KONXEPT services",
@@ -32,9 +32,16 @@ export const metadata: Metadata = {
     "social media graphics Nigeria",
     "business card design Nigeria",
     "stationery design Nigeria",
+    "brochure design Nigeria",
+    "company profile design Nigeria",
+    "packaging design Nigeria",
+    "product label design Nigeria",
+    "catalogue design Nigeria",
+    "corporate branding Nigeria",
+    "printing services Nigeria",
+    "marketing materials design Nigeria",
     "graphic design Nigeria",
     "branding services Nigeria",
-    "printing Nigeria",
     "creative design company Nigeria",
   ],
   alternates: {
@@ -42,8 +49,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Services | Branding, Graphic Design & Printing | BM KONXEPT LTD",
-    description:
-      "Explore BM KONXEPT LTD creative services, including logo design, flyer and poster design, social media graphics, and business cards and stationery.",
+    description: servicesDescription,
     url: `${siteUrl}/services`,
     siteName: "BM KONXEPT LTD",
     locale: "en_NG",
@@ -52,8 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Services | BM KONXEPT LTD",
-    description:
-      "Explore logo design, flyer and poster design, social media graphics, and business cards and stationery from BM KONXEPT LTD.",
+    description: servicesDescription,
   },
   robots: {
     index: true,
@@ -67,17 +72,6 @@ export const metadata: Metadata = {
     },
   },
 };
-
-/* =========================================================
-   SERVICE ICONS
-========================================================= */
-
-const serviceIcons = [
-  Palette,
-  Megaphone,
-  Sparkles,
-  CreditCard,
-];
 
 /* =========================================================
    SERVICE ENTITY LIST
@@ -121,8 +115,7 @@ const servicesPageSchema = {
   "@id": `${siteUrl}/services/#webpage`,
   url: `${siteUrl}/services`,
   name: "BM KONXEPT LTD Services | Branding, Design & Printing",
-  description:
-    "Explore the creative services currently offered by BM KONXEPT LTD, including logo design, flyer and poster design, social media graphics, and business cards and stationery.",
+  description: servicesDescription,
   isPartOf: {
     "@id": `${siteUrl}/#website`,
   },
@@ -148,8 +141,7 @@ const webPageSchema = {
   "@id": `${siteUrl}/services/#webpage`,
   url: `${siteUrl}/services`,
   name: "BM KONXEPT LTD Services | Branding, Design & Printing",
-  description:
-    "Explore the creative services currently offered by BM KONXEPT LTD, including logo design, flyer and poster design, social media graphics, and business cards and stationery.",
+  description: servicesDescription,
   isPartOf: {
     "@id": `${siteUrl}/#website`,
   },
@@ -175,7 +167,7 @@ const serviceListSchema = {
   "@id": `${siteUrl}/services/#service-list`,
   name: "BM KONXEPT LTD Creative Services",
   description:
-    "Current creative services offered by BM KONXEPT LTD for businesses and organizations.",
+    "Current creative services offered by BM KONXEPT LTD for businesses, organizations and individuals.",
   numberOfItems: services.length,
   itemListOrder: "https://schema.org/ItemListOrderAscending",
   itemListElement: serviceItems,
@@ -249,11 +241,7 @@ export default function Services() {
 
         <div className="relative mx-auto max-w-7xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gold">
-            <Sparkles
-              className="h-3.5 w-3.5"
-              aria-hidden="true"
-            />
-
+            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             BM KONXEPT LTD creative services
           </div>
 
@@ -268,10 +256,10 @@ export default function Services() {
           </h1>
 
           <p className="mt-7 max-w-3xl text-base leading-8 text-white/55 sm:text-lg">
-            BM KONXEPT LTD provides creative branding and design solutions for
-            businesses and organizations, including logo design, promotional
-            graphics, social media graphics, business cards, stationery and
-            other visual communication materials.
+            BM KONXEPT LTD provides creative branding, graphic design,
+            advertising and printing solutions for businesses, organizations
+            and individuals. Explore our services, understand what each
+            solution offers, and choose what best fits your project.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -282,11 +270,7 @@ export default function Services() {
               aria-label="Discuss a creative project with BM KONXEPT LTD on WhatsApp"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-4 font-bold text-black transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_35px_rgba(212,175,55,0.2)]"
             >
-              <MessageCircle
-                className="h-4 w-4"
-                aria-hidden="true"
-              />
-
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
               Discuss Your Project
             </a>
 
@@ -296,11 +280,7 @@ export default function Services() {
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-7 py-4 font-semibold text-white/80 transition duration-300 hover:border-gold/40 hover:bg-gold/[0.04] hover:text-white"
             >
               Explore Our Work
-
-              <ArrowRight
-                className="h-4 w-4"
-                aria-hidden="true"
-              />
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
 
@@ -318,6 +298,8 @@ export default function Services() {
 
       {/* =====================================================
           CURRENT SERVICES
+          Reuse the shared component for consistent service
+          details and quotation links across the website.
       ===================================================== */}
 
       <section
@@ -341,67 +323,14 @@ export default function Services() {
             </h2>
 
             <p className="mt-5 leading-7 text-white/50">
-              Explore the current creative services offered by BM KONXEPT LTD
-              to help businesses communicate clearly, promote their work and
-              present themselves professionally.
+              Explore our services to see what we do, what you can receive,
+              and how each solution can help your business communicate and
+              present itself professionally. Select a service to learn more
+              and start your quotation request.
             </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service, index) => {
-              const Icon =
-                serviceIcons[index % serviceIcons.length];
-
-              return (
-                <article
-                  key={service.title}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/35 hover:bg-white/[0.045] hover:shadow-[0_20px_60px_rgba(0,0,0,0.25)] sm:p-7"
-                >
-                  <div
-                    className="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-gold/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
-                    aria-hidden="true"
-                  />
-
-                  <div className="relative flex items-start justify-between">
-                    <div className="grid h-12 w-12 place-items-center rounded-2xl border border-gold/20 bg-gold/[0.08] text-gold transition-all duration-500 group-hover:scale-105 group-hover:border-gold/40 group-hover:bg-gold/15">
-                      <Icon
-                        className="h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    </div>
-
-                    <div className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-white/25 transition-all duration-500 group-hover:border-gold/30 group-hover:text-gold">
-                      <ArrowRight
-                        className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="relative mt-8">
-                    <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold/70">
-                      BM KONXEPT LTD
-                    </p>
-
-                    <h3 className="text-xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-gold sm:text-2xl">
-                      {service.title}
-                    </h3>
-
-                    <p className="mt-3 text-sm leading-7 text-white/45 transition-colors duration-300 group-hover:text-white/55">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  <div
-                    className="relative mt-7 h-px w-full overflow-hidden bg-white/10"
-                    aria-hidden="true"
-                  >
-                    <div className="h-full w-0 bg-gold transition-all duration-700 group-hover:w-full" />
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+          <ServiceCards />
         </div>
       </section>
 
@@ -510,9 +439,7 @@ export default function Services() {
 
           <div className="grid gap-5 md:grid-cols-3">
             <div className="card p-7">
-              <div className="text-sm font-bold text-gold">
-                01
-              </div>
+              <div className="text-sm font-bold text-gold">01</div>
 
               <h3 className="mt-6 text-2xl font-bold">
                 Tell us what you need
@@ -525,9 +452,7 @@ export default function Services() {
             </div>
 
             <div className="card p-7">
-              <div className="text-sm font-bold text-gold">
-                02
-              </div>
+              <div className="text-sm font-bold text-gold">02</div>
 
               <h3 className="mt-6 text-2xl font-bold">
                 We create
@@ -540,9 +465,7 @@ export default function Services() {
             </div>
 
             <div className="card p-7">
-              <div className="text-sm font-bold text-gold">
-                03
-              </div>
+              <div className="text-sm font-bold text-gold">03</div>
 
               <h3 className="mt-6 text-2xl font-bold">
                 You elevate
@@ -590,11 +513,7 @@ export default function Services() {
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 font-bold text-black transition hover:-translate-y-0.5"
               >
                 View Portfolio
-
-                <ArrowRight
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
 
               <Link
@@ -603,11 +522,7 @@ export default function Services() {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white/80 transition hover:border-gold/40 hover:text-white"
               >
                 About BM KONXEPT LTD
-
-                <ArrowRight
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -649,11 +564,7 @@ export default function Services() {
               aria-label="Contact BM KONXEPT LTD on WhatsApp about a project"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-4 font-bold text-black transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_35px_rgba(212,175,55,0.2)]"
             >
-              <MessageCircle
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-
+              <MessageCircle className="h-5 w-5" aria-hidden="true" />
               WhatsApp BM KONXEPT LTD
             </a>
           </div>
