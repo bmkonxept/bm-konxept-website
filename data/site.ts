@@ -29,7 +29,7 @@ export const services = [
   {
     title: "Flyer & Poster Design",
     description:
-      "Eye-catching flyer and poster designs for businesses, events, campaigns, promotions and announcements.",
+      "Eye-catching flyer, poster and roll-up banner designs for businesses, events, campaigns, promotions and announcements.",
   },
   {
     title: "Social Media Graphics",
@@ -55,11 +55,6 @@ export const services = [
     title: "Catalogue Design",
     description:
       "Organized and attractive catalogue designs for showcasing products, services, collections and business offerings.",
-  },
-  {
-    title: "Roll-up Banners",
-    description:
-      "Professional roll-up banner designs for exhibitions, events, offices, promotions, presentations and other display needs.",
   },
   {
     title: "Corporate Branding",
