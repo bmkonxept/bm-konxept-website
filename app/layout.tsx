@@ -1,5 +1,7 @@
+
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import Navbar from "@/components/Navbar";
@@ -234,6 +236,8 @@ export default function RootLayout({
 
         <RegisterSW />
         <InstallPrompt />
+
+        <Analytics />
       </body>
     </html>
   );
